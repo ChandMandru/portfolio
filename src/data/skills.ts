@@ -4,35 +4,32 @@ export const skills: SkillCategory[] = [
   {
     category: 'Languages',
     skills: [
-      { name: 'TypeScript', proficiency: 'advanced' },
-      { name: 'Python', proficiency: 'advanced' },
-      { name: 'JavaScript', proficiency: 'expert' },
-      { name: 'SQL', proficiency: 'intermediate' },
+      { name: 'Java' },
+      { name: 'Kotlin' },
+      { name: 'JavaScript' },
+      { name: 'TypeScript' },
     ],
   },
   {
-    category: 'Frameworks',
+    category: 'Frameworks & Libraries',
     skills: [
-      { name: 'React', proficiency: 'advanced' },
-      { name: 'Next.js', proficiency: 'advanced' },
-      { name: 'Node.js', proficiency: 'advanced' },
-      { name: 'Tailwind CSS', proficiency: 'intermediate' },
+      { name: 'Spring Web' },
+      { name: 'Hibernate' },
+      { name: 'React' },
+      { name: 'Vue.js' },
+      { name: 'Node.js' },
+      { name: 'Next.js' },
     ],
   },
   {
-    category: 'Tools & Platforms',
+    category: 'Tools & DevOps',
     skills: [
-      { name: 'Git', proficiency: 'advanced' },
-      { name: 'Docker', proficiency: 'intermediate' },
-      { name: 'VS Code', proficiency: 'expert' },
-    ],
-  },
-  {
-    category: 'Cloud & DevOps',
-    skills: [
-      { name: 'AWS', proficiency: 'intermediate' },
-      { name: 'Vercel', proficiency: 'advanced' },
-      { name: 'GitHub Actions', proficiency: 'intermediate' },
+      { name: 'Git' },
+      { name: 'JIRA' },
+      { name: 'Scrum' },
+      { name: 'Gradle' },
+      { name: 'Maven' },
+      { name: 'Sentry' },
     ],
   },
 ];

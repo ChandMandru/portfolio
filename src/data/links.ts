@@ -3,17 +3,17 @@ import type { SocialLink } from './types';
 export const links: SocialLink[] = [
   {
     platform: 'GitHub',
-    url: 'https://github.com/placeholder',
+    url: 'https://github.com/ChandMandru',
     icon: 'github',
   },
   {
     platform: 'LinkedIn',
-    url: 'https://linkedin.com/in/placeholder',
+    url: 'https://www.linkedin.com/in/chand-mandru-6a670618b/',
     icon: 'linkedin',
   },
   {
     platform: 'Email',
-    url: 'mailto:placeholder@example.com',
+    url: 'mailto:chandkmandru@gmail.com',
     icon: 'mail',
   },
 ];

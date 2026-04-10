@@ -2,24 +2,33 @@ import type { ExperienceEntry } from './types';
 
 export const experience: ExperienceEntry[] = [
   {
-    title: 'Senior Software Engineer',
-    company: 'Acme Corp',
-    startDate: '2022-01',
-    endDate: 'Present',
+    title: 'Working Student Android Developer',
+    company: 'C24 Bank, Mainz',
+    startDate: '2022-12',
+    endDate: '2023-12',
     accomplishments: [
-      'Led migration of monolithic API to microservices, reducing deploy time by 60%',
-      'Mentored 3 junior developers through structured onboarding program',
-      'Designed and implemented real-time notification system serving 50k+ users',
+      'Feature development for the C24 Bank Android application',
+      'QA testing and bug fixing across multiple release cycles',
+      'Built Debug Log Screen for on-device debugging with Sentry integration, enabling faster issue resolution for the development team',
     ],
   },
   {
-    title: 'Software Engineer',
-    company: 'StartupCo',
-    startDate: '2020-03',
-    endDate: '2021-12',
+    title: 'Lotcheck Coordination Assistant',
+    company: 'Nintendo of Europe, Frankfurt',
+    startDate: '2021-09',
+    endDate: '2022-03',
     accomplishments: [
-      'Built customer-facing dashboard with React and TypeScript',
-      'Reduced API response times by 40% through query optimization',
+      'Coordinated SW/HW preparation for Nintendo Switch software testing',
+      'Organized and managed testing staff schedules and assignments',
+    ],
+  },
+  {
+    title: 'Game Tester Lotcheck',
+    company: 'Nintendo of Europe, Frankfurt',
+    startDate: '2021-06',
+    endDate: '2021-09',
+    accomplishments: [
+      'QA testing of Nintendo Switch software releases prior to market launch',
     ],
   },
 ];
