@@ -14,13 +14,13 @@ export function ThemeToggle() {
   );
 
   if (!mounted) {
-    return <div className="h-9 w-9" />;
+    return <div className="min-h-[44px] min-w-[44px]" />;
   }
 
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="rounded-md p-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+      className="rounded-md p-2.5 min-h-[44px] min-w-[44px] hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
       {theme === 'dark' ? (

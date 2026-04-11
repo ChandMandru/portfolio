@@ -1,5 +1,8 @@
+'use client';
+
 import { links } from '@/data/links';
 import type { SocialLink } from '@/data/types';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 function GitHubIcon() {
   return (
@@ -77,13 +80,16 @@ function SocialLinkItem({ link }: { link: SocialLink }) {
 }
 
 export function SocialLinksSection() {
+  const ref = useScrollAnimation();
   return (
-    <section className="py-12">
-      <h2 className="text-xl font-semibold text-foreground mb-8">Connect</h2>
-      <div className="flex flex-wrap gap-4">
-        {links.map((link) => (
-          <SocialLinkItem key={link.platform} link={link} />
-        ))}
+    <section className="py-12 md:py-16">
+      <div ref={ref}>
+        <h2 className="text-xl font-semibold text-foreground mb-8">Connect</h2>
+        <div className="flex flex-wrap gap-4">
+          {links.map((link) => (
+            <SocialLinkItem key={link.platform} link={link} />
+          ))}
+        </div>
       </div>
     </section>
   );
