@@ -1,7 +1,5 @@
 import { HeroSection } from '@/components/HeroSection';
-import { ExperienceSection } from '@/components/ExperienceSection';
-import { SkillsSection } from '@/components/SkillsSection';
-import { SocialLinksSection } from '@/components/SocialLinksSection';
+import { TabNavigation } from '@/components/TabNavigation';
 
 export default function Home() {
   return (
@@ -18,9 +16,7 @@ export default function Home() {
 
       <main className="relative max-w-3xl xl:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <HeroSection />
-        <ExperienceSection />
-        <SkillsSection />
-        <SocialLinksSection />
+        <TabNavigation />
       </main>
     </div>
   );
