@@ -21,12 +21,6 @@ export function HeroSection() {
             Ask my AI
           </a>
           <a
-            href="#experience"
-            className="inline-flex items-center justify-center h-11 px-6 rounded-md border border-border text-foreground font-medium hover:bg-muted transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 w-full sm:w-auto"
-          >
-            View Projects
-          </a>
-          <a
             href="/Chand-Mandru-CV.pdf"
             download
             className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-md border border-border text-foreground font-medium hover:bg-muted transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 w-full sm:w-auto"
