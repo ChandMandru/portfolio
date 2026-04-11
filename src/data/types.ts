@@ -5,6 +5,9 @@ export interface ExperienceEntry {
   startDate: string;
   endDate: string | 'Present';
   accomplishments: string[]; // 2-4 bullet points
+  technologies?: string[];
+  documentUrl?: string;
+  documentLabel?: string;
   companyLogoUrl?: string;
 }
 

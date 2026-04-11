@@ -1,8 +1,6 @@
-'use client';
-
 import { experience } from '@/data/experience';
 import type { ExperienceEntry } from '@/data/types';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+
 
 const MONTHS = [
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -32,32 +30,43 @@ function ExperienceCard({ entry }: { entry: ExperienceEntry }) {
             </li>
           ))}
         </ul>
+        {entry.technologies && (
+          <div className="flex flex-wrap gap-1.5 mt-4">
+            {entry.technologies.map((tech) => (
+              <span
+                key={tech}
+                className="bg-blue-500/5 dark:bg-blue-400/10 border border-blue-500/10 dark:border-blue-400/15 rounded-full px-2.5 py-0.5 text-xs font-medium text-muted-foreground"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
+        {entry.documentUrl && (
+          <a
+            href={entry.documentUrl}
+            download
+            className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-blue-500 dark:text-blue-400 hover:underline"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+              <path d="M12 3v13" />
+              <path d="M7 11l5 5 5-5" />
+              <path d="M5 21h14" />
+            </svg>
+            {entry.documentLabel ?? 'Download'}
+          </a>
+        )}
       </div>
     </div>
   );
 }
 
 export function ExperienceSection() {
-  const ref = useScrollAnimation();
   return (
-    <section id="experience" className="py-12 md:py-16">
-      <div ref={ref}>
-        <h2 className="text-xl font-semibold text-foreground mb-8">Work Experience</h2>
-        <div className="flex flex-col gap-8">
-          {experience.map((entry, i) => (
-            <ExperienceCard key={i} entry={entry} />
-          ))}
-        </div>
-        <div className="mt-8 text-sm text-muted-foreground">
-          <p>B.Sc. Media Information Technology &middot; RheinMain University &middot; 2025</p>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Bachelor&apos;s Thesis: Self Sovereign Identity im gr&uuml;nen Bereich
-            <span className="ml-2 bg-muted rounded px-2 py-0.5 text-sm font-semibold text-foreground">
-              1.2
-            </span>
-          </p>
-        </div>
-      </div>
-    </section>
+    <div className="flex flex-col gap-8">
+      {experience.map((entry, i) => (
+        <ExperienceCard key={i} entry={entry} />
+      ))}
+    </div>
   );
 }

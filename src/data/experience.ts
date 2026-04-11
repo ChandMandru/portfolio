@@ -2,6 +2,19 @@ import type { ExperienceEntry } from './types';
 
 export const experience: ExperienceEntry[] = [
   {
+    title: "Bachelor's Thesis — Self Sovereign Identity im grünen Bereich",
+    company: 'RheinMain University, Wiesbaden',
+    startDate: '2024-06',
+    endDate: '2025-05',
+    accomplishments: [
+      'Researched and implemented Self-Sovereign Identity (SSI) concepts for sustainable applications',
+      'Graded 1.2 (sehr gut), supervised by Prof. Dr. Philipp Schaible',
+    ],
+    technologies: ['Java', 'Spring Boot', 'Hyperledger Aries', 'DIDComm', 'Verifiable Credentials'],
+    documentUrl: '/Bachelor-Thesis-Chand-Mandru.pdf',
+    documentLabel: 'Download Thesis',
+  },
+  {
     title: 'Working Student Android Developer',
     company: 'C24 Bank, Mainz',
     startDate: '2022-12',
@@ -11,6 +24,9 @@ export const experience: ExperienceEntry[] = [
       'QA testing and bug fixing across multiple release cycles',
       'Built Debug Log Screen for on-device debugging with Sentry integration, enabling faster issue resolution for the development team',
     ],
+    technologies: ['Kotlin', 'Android SDK', 'Jetpack Compose', 'Sentry', 'Gradle'],
+    documentUrl: '/Chand-Mandru-Arbeitszeugnis.pdf',
+    documentLabel: 'Work Reference',
   },
   {
     title: 'Lotcheck Coordination Assistant',
