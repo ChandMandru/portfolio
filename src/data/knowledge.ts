@@ -15,7 +15,7 @@ export const knowledge: KnowledgeSection[] = [
   },
   {
     name: 'Projects',
-    content: `Bachelor thesis "Self Sovereign Identity im grunen Bereich" completed with a grade of 1.2 (top grade). This portfolio site — built with Next.js, TypeScript, and Tailwind CSS, featuring an AI chatbot powered by Claude. Designed as a professional showcase with modern gradient aesthetics.`,
+    content: `Bachelor thesis "Self Sovereign Identity im grunen Bereich" completed with a grade of 1.2 (top grade). This portfolio site — built with Next.js, TypeScript, and Tailwind CSS, featuring an AI chatbot powered by OpenAI. Designed as a professional showcase with modern gradient aesthetics.`,
   },
   {
     name: 'Fun Facts',
