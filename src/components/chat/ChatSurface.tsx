@@ -5,6 +5,7 @@ import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport } from 'ai';
 import type { UIMessage } from 'ai';
 import { PaperPlaneIcon, StopIcon } from './icons';
+import { MarkdownMessage } from './MarkdownMessage';
 
 // ── Transport (hoisted to module scope to avoid re-creation on every render) ─
 
@@ -43,13 +44,13 @@ const MessageBubble = React.memo(function MessageBubble({ message }: { message: 
   return (
     <div className={`flex items-end ${isUser ? 'justify-end' : 'justify-start'}`}>
       <div
-        className={`max-w-[75%] rounded-2xl px-4 py-2 text-base leading-relaxed whitespace-pre-wrap ${
+        className={`max-w-[75%] rounded-2xl px-4 py-2 text-base leading-relaxed ${
           isUser
-            ? 'bg-gradient-to-r from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 text-white rounded-br-sm'
-            : 'bg-muted text-foreground border border-border rounded-bl-sm'
+            ? 'bg-gradient-to-r from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 text-white rounded-br-sm whitespace-pre-wrap'
+            : 'bg-muted text-foreground border border-border rounded-bl-sm prose prose-sm dark:prose-invert max-w-none'
         }`}
       >
-        {text}
+        {isUser ? text : <MarkdownMessage content={text} />}
       </div>
     </div>
   );
@@ -216,8 +217,24 @@ export function ChatSurface({
           {showTyping && <TypingIndicator />}
           {error && (
             <div role="alert" className="flex justify-start">
-              <div className="max-w-[75%] rounded-2xl rounded-bl-sm px-4 py-3 bg-red-50 dark:bg-[#2d1515] border border-red-300 dark:border-red-900 text-red-700 dark:text-red-300 text-sm">
-                Something went wrong. Try again or reload the page.
+              <div className="max-w-[75%] rounded-2xl rounded-bl-sm px-4 py-3 bg-red-50 dark:bg-[#2d1515] border border-red-300 dark:border-red-900 text-red-700 dark:text-red-300 text-sm flex flex-col gap-2">
+                <span>Something went wrong. Try again or reload the page.</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const lastUserMsg = [...messages].reverse().find((m) => m.role === 'user');
+                    if (lastUserMsg) {
+                      const text = lastUserMsg.parts
+                        .filter((p) => p.type === 'text')
+                        .map((p) => (p as { type: 'text'; text: string }).text)
+                        .join('');
+                      if (text) submitMessage(text);
+                    }
+                  }}
+                  className="self-start text-xs font-medium px-3 py-1.5 rounded-md bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors duration-150"
+                >
+                  Retry
+                </button>
               </div>
             </div>
           )}
