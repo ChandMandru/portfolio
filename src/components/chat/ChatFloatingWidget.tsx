@@ -91,7 +91,6 @@ export function ChatFloatingWidget() {
           <div
             role="dialog"
             aria-label="Chat with Chand's AI assistant"
-            aria-modal="true"
             data-state="open"
             className="fixed bottom-[calc(3rem+56px+8px)] right-12 z-40 w-[380px] h-[560px] bg-background border border-border rounded-xl shadow-xl flex flex-col overflow-hidden origin-bottom-right transition-all duration-150 ease-out scale-100 opacity-100"
           >
@@ -109,7 +108,6 @@ export function ChatFloatingWidget() {
           <div
             role="dialog"
             aria-label="Chat with Chand's AI assistant"
-            aria-modal="true"
             data-state="open"
             className="fixed inset-0 z-40 bg-background flex flex-col transition-transform duration-300 ease-out translate-y-0"
           >

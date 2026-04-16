@@ -6,6 +6,10 @@ import { DefaultChatTransport } from 'ai';
 import type { UIMessage } from 'ai';
 import { PaperPlaneIcon, StopIcon } from './icons';
 
+// ── Transport (hoisted to module scope to avoid re-creation on every render) ─
+
+const chatTransport = new DefaultChatTransport({ api: '/api/chat' });
+
 // ── Types ────────────────────────────────────────────────────────────────────
 
 export type ChatSurfaceHandle = { reset: () => void };
@@ -107,7 +111,7 @@ export function ChatSurface({
   surfaceRef,
 }: ChatSurfaceProps) {
   const { messages, sendMessage, status, error, stop, setMessages } = useChat({
-    transport: new DefaultChatTransport({ api: '/api/chat' }),
+    transport: chatTransport,
   });
 
   const [inputValue, setInputValue] = useState('');
@@ -161,7 +165,13 @@ export function ChatSurface({
       if (textareaRef.current) {
         textareaRef.current.style.height = 'auto';
       }
-      await sendMessage({ text });
+      try {
+        await sendMessage({ text });
+      } catch {
+        // useChat surfaces network errors via its `error` state —
+        // this catch prevents unhandled promise rejections for
+        // failures that fire before streaming begins.
+      }
     },
     [isStreaming, sendMessage],
   );
