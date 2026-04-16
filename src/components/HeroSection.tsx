@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export function HeroSection() {
@@ -14,12 +15,12 @@ export function HeroSection() {
           Software Developer
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-          <a
-            href="#chat"
+          <Link
+            href="/chat"
             className="inline-flex items-center justify-center h-11 px-6 rounded-md bg-gradient-to-r from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 text-white font-medium hover:opacity-90 transition-opacity duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 w-full sm:w-auto"
           >
             Ask my AI
-          </a>
+          </Link>
           <a
             href="/Chand-Mandru-CV.pdf"
             download
