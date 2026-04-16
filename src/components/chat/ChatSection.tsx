@@ -1,16 +1,28 @@
 'use client';
 
+import { useState } from 'react';
 import { useChat } from '@ai-sdk/react';
+import { DefaultChatTransport } from 'ai';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { ChatMessages } from './ChatMessages';
 import { ChatInput } from './ChatInput';
 
 export function ChatSection() {
   const ref = useScrollAnimation();
-  const { messages, input, setInput, handleSubmit, isLoading, error } =
-    useChat({
-      api: '/api/chat',
-    });
+  const [input, setInput] = useState('');
+  const { messages, sendMessage, status, error } = useChat({
+    transport: new DefaultChatTransport({ api: '/api/chat' }),
+  });
+
+  const isLoading = status === 'submitted' || status === 'streaming';
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+    const text = input.trim();
+    setInput('');
+    sendMessage({ text });
+  };
 
   return (
     <section id="chat" className="py-12 md:py-16">

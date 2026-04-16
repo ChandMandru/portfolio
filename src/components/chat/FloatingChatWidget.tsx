@@ -2,18 +2,30 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useChat } from '@ai-sdk/react';
+import { DefaultChatTransport } from 'ai';
 import { ChatMessages } from './ChatMessages';
 import { ChatInput } from './ChatInput';
 
+// Legacy widget — superseded by ChatFloatingWidget (05-03).
+// Kept for compilation compatibility; not mounted on any page.
 export function FloatingChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
+  const [inputValue, setInputValue] = useState('');
   const drawerRef = useRef<HTMLDivElement>(null);
 
-  const { messages, input, setInput, handleSubmit, isLoading, error } =
-    useChat({
-      api: '/api/chat',
-      id: 'floating-widget',
-    });
+  const { messages, sendMessage, status, error } = useChat({
+    transport: new DefaultChatTransport({ api: '/api/chat' }),
+  });
+
+  const isLoading = status === 'submitted' || status === 'streaming';
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!inputValue.trim() || isLoading) return;
+    const text = inputValue.trim();
+    setInputValue('');
+    sendMessage({ text });
+  };
 
   // Close on Escape key
   useEffect(() => {
@@ -35,7 +47,6 @@ export function FloatingChatWidget() {
 
   return (
     <div className="fixed bottom-5 right-4 sm:right-6 z-50 flex flex-col items-end gap-3">
-      {/* Chat Drawer */}
       {isOpen && (
         <div
           ref={drawerRef}
@@ -45,7 +56,6 @@ export function FloatingChatWidget() {
           className="w-80 sm:w-96 rounded-2xl border border-border overflow-hidden flex flex-col bg-background shadow-2xl"
           style={{ height: '460px' }}
         >
-          {/* Drawer header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-gradient-to-r from-blue-500/10 to-violet-600/10">
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
@@ -53,7 +63,7 @@ export function FloatingChatWidget() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-foreground leading-none">
-                  Chand's AI
+                  Chand&apos;s AI
                 </p>
                 <p className="text-xs text-muted-foreground mt-0.5">Ask about my background</p>
               </div>
@@ -82,19 +92,18 @@ export function FloatingChatWidget() {
 
           <ChatMessages messages={messages} isLoading={isLoading} error={error} />
           <ChatInput
-            input={input}
+            input={inputValue}
             isLoading={isLoading}
-            onInputChange={setInput}
+            onInputChange={setInputValue}
             onSubmit={handleSubmit}
             placeholder="Ask about Chand…"
           />
         </div>
       )}
 
-      {/* Toggle button */}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        aria-label={isOpen ? 'Close chat' : 'Open chat with Chand\'s AI'}
+        aria-label={isOpen ? 'Close chat' : "Open chat with Chand's AI"}
         aria-expanded={isOpen}
         className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 flex items-center justify-center"
       >
