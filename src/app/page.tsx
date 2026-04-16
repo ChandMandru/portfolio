@@ -1,16 +1,7 @@
-import dynamic from 'next/dynamic';
 import { HeroSection } from '@/components/HeroSection';
 import { TabNavigation } from '@/components/TabNavigation';
 import { ChatSection } from '@/components/chat/ChatSection';
-
-// FloatingChatWidget uses browser APIs — skip SSR to avoid hydration mismatch
-const FloatingChatWidget = dynamic(
-  () =>
-    import('@/components/chat/FloatingChatWidget').then(
-      (m) => m.FloatingChatWidget
-    ),
-  { ssr: false }
-);
+import { FloatingChatWidgetLoader } from '@/components/chat/FloatingChatWidgetLoader';
 
 export default function Home() {
   return (
@@ -31,8 +22,8 @@ export default function Home() {
         <ChatSection />
       </main>
 
-      {/* Floating chat widget — always visible, dynamically loaded to avoid SSR issues */}
-      <FloatingChatWidget />
+      {/* Floating chat widget — client-only loader avoids SSR issues */}
+      <FloatingChatWidgetLoader />
     </div>
   );
 }

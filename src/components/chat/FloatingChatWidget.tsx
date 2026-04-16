@@ -1,19 +1,13 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useChat } from '@ai-sdk/react';
-import { ChatMessages } from './ChatMessages';
-import { ChatInput } from './ChatInput';
+import { ChatSurface } from './ChatSurface';
+import type { ChatSurfaceHandle } from './ChatSurface';
 
 export function FloatingChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
-
-  const { messages, input, setInput, handleSubmit, isLoading, error } =
-    useChat({
-      api: '/api/chat',
-      id: 'floating-widget',
-    });
+  const surfaceRef = useRef<ChatSurfaceHandle | null>(null);
 
   // Close on Escape key
   useEffect(() => {
@@ -80,13 +74,10 @@ export function FloatingChatWidget() {
             </button>
           </div>
 
-          <ChatMessages messages={messages} isLoading={isLoading} error={error} />
-          <ChatInput
-            input={input}
-            isLoading={isLoading}
-            onInputChange={setInput}
-            onSubmit={handleSubmit}
-            placeholder="Ask about Chand…"
+          <ChatSurface
+            surfaceRef={surfaceRef}
+            scrollAreaClassName=""
+            inputAreaClassName="border-t border-border px-3 py-3"
           />
         </div>
       )}
@@ -94,7 +85,7 @@ export function FloatingChatWidget() {
       {/* Toggle button */}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        aria-label={isOpen ? 'Close chat' : 'Open chat with Chand\'s AI'}
+        aria-label={isOpen ? 'Close chat' : "Open chat with Chand's AI"}
         aria-expanded={isOpen}
         className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 text-white shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 flex items-center justify-center"
       >

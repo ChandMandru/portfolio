@@ -1,16 +1,10 @@
 'use client';
 
-import { useChat } from '@ai-sdk/react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { ChatMessages } from './ChatMessages';
-import { ChatInput } from './ChatInput';
+import { ChatSurface } from './ChatSurface';
 
 export function ChatSection() {
   const ref = useScrollAnimation();
-  const { messages, input, setInput, handleSubmit, isLoading, error } =
-    useChat({
-      api: '/api/chat',
-    });
 
   return (
     <section id="chat" className="py-12 md:py-16">
@@ -27,12 +21,9 @@ export function ChatSection() {
           className="rounded-2xl border border-border overflow-hidden flex flex-col bg-background/60 backdrop-blur-sm shadow-sm"
           style={{ height: '420px' }}
         >
-          <ChatMessages messages={messages} isLoading={isLoading} error={error} />
-          <ChatInput
-            input={input}
-            isLoading={isLoading}
-            onInputChange={setInput}
-            onSubmit={handleSubmit}
+          <ChatSurface
+            scrollAreaClassName=""
+            inputAreaClassName="border-t border-border px-3 py-3"
           />
         </div>
       </div>
