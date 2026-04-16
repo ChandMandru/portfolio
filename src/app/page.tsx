@@ -1,21 +1,11 @@
-import dynamic from 'next/dynamic';
 import { HeroSection } from '@/components/HeroSection';
 import { TabNavigation } from '@/components/TabNavigation';
-import { ChatSection } from '@/components/chat/ChatSection';
-
-// FloatingChatWidget uses browser APIs — skip SSR to avoid hydration mismatch
-const FloatingChatWidget = dynamic(
-  () =>
-    import('@/components/chat/FloatingChatWidget').then(
-      (m) => m.FloatingChatWidget
-    ),
-  { ssr: false }
-);
+import { ChatFloatingWidget } from '@/components/chat/ChatFloatingWidget';
 
 export default function Home() {
   return (
     <div className="relative">
-      {/* Ambient glow orbs - dark mode only (D-04) */}
+      {/* Ambient glow orbs - dark mode only (D-04 from Phase 3) */}
       <div
         className="pointer-events-none fixed -top-20 -left-20 h-[500px] w-[500px] rounded-full bg-blue-500/20 blur-[80px] hidden dark:block"
         aria-hidden="true"
@@ -28,11 +18,10 @@ export default function Home() {
       <main className="relative max-w-3xl xl:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <HeroSection />
         <TabNavigation />
-        <ChatSection />
       </main>
 
-      {/* Floating chat widget — always visible, dynamically loaded to avoid SSR issues */}
-      <FloatingChatWidget />
+      {/* D-06: floating chat widget on homepage ONLY (not on /chat) */}
+      <ChatFloatingWidget />
     </div>
   );
 }
