@@ -38,7 +38,7 @@ const securityHeaders = [
       "base-uri 'self'",
       "form-action 'self'",
       "object-src 'none'",
-      "upgrade-insecure-requests",
+      'upgrade-insecure-requests',
     ].join('; '),
   },
   {
@@ -72,14 +72,7 @@ const nextConfig: NextConfig = {
     // D-02: www → apex redirect. Vercel also handles this at the edge once the domain is
     // configured in the dashboard, but defining it here makes the intent explicit in code
     // and covers local preview builds (next start) too.
-    return [
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.chandmandru.dev' }],
-        destination: 'https://chandmandru.dev/:path*',
-        permanent: true,
-      },
-    ];
+    return [];
   },
 };
 
