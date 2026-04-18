@@ -6,15 +6,15 @@ import { ExperienceSection } from '@/components/ExperienceSection';
 import { SocialLinksSection } from '@/components/SocialLinksSection';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
-const TABS = ['Skills', 'Projects', 'Connect'] as const;
+const TABS = ['Skills', 'Experience', 'Connect'] as const;
 type Tab = (typeof TABS)[number];
-const TAB_INDEX: Record<Tab, number> = { Skills: 0, Projects: 1, Connect: 2 };
+const TAB_INDEX: Record<Tab, number> = { Skills: 0, Experience: 1, Connect: 2 };
 
 function TabContent({ tab }: { tab: Tab }) {
   switch (tab) {
     case 'Skills':
       return <SkillsSection />;
-    case 'Projects':
+    case 'Experience':
       return <ExperienceSection />;
     case 'Connect':
       return <SocialLinksSection />;
@@ -22,8 +22,8 @@ function TabContent({ tab }: { tab: Tab }) {
 }
 
 export function TabNavigation() {
-  const [activeTab, setActiveTab] = useState<Tab>('Projects');
-  const [displayedTab, setDisplayedTab] = useState<Tab>('Projects');
+  const [activeTab, setActiveTab] = useState<Tab>('Experience');
+  const [displayedTab, setDisplayedTab] = useState<Tab>('Experience');
   const [animating, setAnimating] = useState(false);
   const [slideDirection, setSlideDirection] = useState<'left' | 'right'>('left');
   const ref = useScrollAnimation();

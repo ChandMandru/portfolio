@@ -1,23 +1,25 @@
 import { skills } from '@/data/skills';
 
-const DEVICON_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
+// Icons served from /public/icons/skills/ so production CSP `img-src 'self'`
+// allows them without loosening the policy for an external CDN.
+const ICON_BASE = '/icons/skills';
 
 const ICON_MAP: Record<string, { url: string; invertDark?: boolean }> = {
-  Java: { url: `${DEVICON_BASE}/java/java-original.svg` },
-  Kotlin: { url: `${DEVICON_BASE}/kotlin/kotlin-original.svg` },
-  JavaScript: { url: `${DEVICON_BASE}/javascript/javascript-original.svg` },
-  TypeScript: { url: `${DEVICON_BASE}/typescript/typescript-original.svg` },
-  'Spring Web': { url: `${DEVICON_BASE}/spring/spring-original.svg` },
-  Hibernate: { url: `${DEVICON_BASE}/hibernate/hibernate-original.svg` },
-  React: { url: `${DEVICON_BASE}/react/react-original.svg` },
-  'Vue.js': { url: `${DEVICON_BASE}/vuejs/vuejs-original.svg` },
-  'Node.js': { url: `${DEVICON_BASE}/nodejs/nodejs-original.svg` },
-  'Next.js': { url: `${DEVICON_BASE}/nextjs/nextjs-plain.svg`, invertDark: true },
-  Git: { url: `${DEVICON_BASE}/git/git-original.svg` },
-  JIRA: { url: `${DEVICON_BASE}/jira/jira-original.svg` },
-  Gradle: { url: `${DEVICON_BASE}/gradle/gradle-original.svg`, invertDark: true },
-  Maven: { url: `${DEVICON_BASE}/maven/maven-original.svg` },
-  Sentry: { url: `${DEVICON_BASE}/sentry/sentry-original.svg`, invertDark: true },
+  Java: { url: `${ICON_BASE}/java-original.svg` },
+  Kotlin: { url: `${ICON_BASE}/kotlin-original.svg` },
+  JavaScript: { url: `${ICON_BASE}/javascript-original.svg` },
+  TypeScript: { url: `${ICON_BASE}/typescript-original.svg` },
+  'Spring Web': { url: `${ICON_BASE}/spring-original.svg` },
+  Hibernate: { url: `${ICON_BASE}/hibernate-original.svg` },
+  React: { url: `${ICON_BASE}/react-original.svg` },
+  'Vue.js': { url: `${ICON_BASE}/vuejs-original.svg` },
+  'Node.js': { url: `${ICON_BASE}/nodejs-original.svg` },
+  'Next.js': { url: `${ICON_BASE}/nextjs-plain.svg`, invertDark: true },
+  Git: { url: `${ICON_BASE}/git-original.svg` },
+  JIRA: { url: `${ICON_BASE}/jira-original.svg` },
+  Gradle: { url: `${ICON_BASE}/gradle-original.svg`, invertDark: true },
+  Maven: { url: `${ICON_BASE}/maven-original.svg` },
+  Sentry: { url: `${ICON_BASE}/sentry-original.svg`, invertDark: true },
 };
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
