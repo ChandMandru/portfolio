@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { GlobalThemeToggle } from '@/components/GlobalThemeToggle';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -60,9 +60,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
-          <header className="fixed top-0 right-0 p-4 z-50">
-            <ThemeToggle />
-          </header>
+          <GlobalThemeToggle />
           {children}
         </ThemeProvider>
         <Analytics />

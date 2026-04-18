@@ -167,7 +167,11 @@ export function HeroSection() {
               >
                 <LinkedInIcon />
               </a>
-              <div className="inline-flex items-center rounded-full bg-muted overflow-hidden" role="group" aria-label="Email contact">
+              <div
+                className="inline-flex items-center rounded-full bg-muted overflow-hidden"
+                role="group"
+                aria-label="Email contact"
+              >
                 <a
                   href={`mailto:${EMAIL_ADDRESS}`}
                   aria-label="Send email"
@@ -179,7 +183,11 @@ export function HeroSection() {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  aria-label={copied ? 'Email copied to clipboard' : 'Copy email to clipboard'}
+                  aria-label={
+                    copied
+                      ? 'Email copied to clipboard'
+                      : 'Copy email to clipboard'
+                  }
                   title={copied ? 'Copied!' : `Copy ${EMAIL_ADDRESS}`}
                   className="inline-flex items-center justify-center w-10 h-10 text-foreground hover:bg-blue-500/10 hover:text-blue-500 dark:hover:bg-blue-400/15 dark:hover:text-blue-400 transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 cursor-pointer"
                 >
@@ -211,11 +219,9 @@ export function HeroSection() {
           <p className="mt-3 text-base leading-relaxed text-foreground">
             Hey, my name is Chand Mandru. I’m a recent Computer Science
             graduate, software developer, and AI enthusiast with a strong
-            passion for building and exploring new technologies. This is my
-            personal portfolio, where you can find all of my relevant work,
-            projects, and experience. If you’d like to get in touch, feel free
-            to reach out through any of my linked socials — I’d be happy to
-            connect and have a conversation.
+            passion for building and exploring new technologies. If you’d like
+            to get in touch, feel free to reach out through any of my linked
+            socials.
           </p>
         </div>
       </div>

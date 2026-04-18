@@ -209,7 +209,7 @@ export function ChatSurface({
         aria-label="Conversation"
         className={`flex-1 overflow-y-auto min-h-0 flex flex-col ${scrollAreaClassName}`}
       >
-        <div className="flex flex-col gap-6 py-4 mt-auto">
+        <div className={`flex flex-col gap-6 py-4 ${showEmpty ? '' : 'mt-auto'}`}>
           {showEmpty && <EmptyState onChipClick={handleChipClick} />}
           {messages.map((msg) => (
             <MessageBubble key={msg.id} message={msg} />

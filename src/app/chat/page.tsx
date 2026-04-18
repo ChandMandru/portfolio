@@ -2,6 +2,7 @@
 
 import { ChatSurface } from '@/components/chat/ChatSurface';
 import { RotateCcwIcon } from '@/components/chat/icons';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
@@ -44,16 +45,22 @@ export default function ChatPage() {
               Chand Mandru
             </span>
           </Link>
-          {/* D-31: New chat reset button */}
-          <button
-            type="button"
-            onClick={handleNewChat}
-            aria-label="Start a new conversation"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
-          >
-            <RotateCcwIcon className="w-4 h-4" />
-            <span className="hover:cursor-pointer">New chat</span>
-          </button>
+          <div className="flex items-center gap-1">
+            {/* D-31: New chat reset button */}
+            <button
+              type="button"
+              onClick={handleNewChat}
+              aria-label="Start a new conversation"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 cursor-pointer"
+            >
+              <RotateCcwIcon className="w-4 h-4" />
+              <span>New chat</span>
+            </button>
+            {/* Theme toggle — desktop only; mobile relies on home-page toggle */}
+            <div className="hidden sm:flex">
+              <ThemeToggle />
+            </div>
+          </div>
         </div>
       </header>
 
@@ -63,7 +70,7 @@ export default function ChatPage() {
           surfaceRef={surfaceRef}
           autoFocus={autoFocus}
           scrollAreaClassName=""
-          inputAreaClassName="sticky bottom-0 bg-background/80 backdrop-blur-sm pt-3 pb-24"
+          inputAreaClassName="sticky bottom-0 pt-3 pb-6 sm:pb-24"
         />
       </main>
     </div>

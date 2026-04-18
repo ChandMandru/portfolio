@@ -79,7 +79,7 @@ export function ChatFloatingWidget() {
         onClick={() => setIsOpen((v) => !v)}
         aria-label={isOpen ? 'Close chat' : "Chat with Chand's AI assistant"}
         aria-expanded={isOpen}
-        className="fixed bottom-12 right-12 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 text-white shadow-lg hover:opacity-90 transition-opacity duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 flex items-center justify-center cursor-pointer"
+        className="hidden sm:flex fixed bottom-12 right-12 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 text-white shadow-lg hover:opacity-90 transition-opacity duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 items-center justify-center cursor-pointer"
       >
         {isOpen ? <CloseIcon className="w-6 h-6" /> : <ChatIcon className="w-6 h-6" />}
       </button>
