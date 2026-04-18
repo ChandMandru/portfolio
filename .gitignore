@@ -1,6 +1,7 @@
 # dependencies
 node_modules/
 .pnpm-store/
+.playwright-mcp
 
 # next.js
 .next/

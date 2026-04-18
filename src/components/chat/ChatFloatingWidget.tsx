@@ -53,7 +53,7 @@ export function ChatFloatingWidget() {
           type="button"
           onClick={handleNewChat}
           aria-label="Start a new conversation"
-          className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+          className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 cursor-pointer"
         >
           <RotateCcwIcon className="w-4 h-4" />
         </button>
@@ -62,7 +62,7 @@ export function ChatFloatingWidget() {
           type="button"
           onClick={handleClose}
           aria-label="Close chat"
-          className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+          className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 cursor-pointer"
         >
           <CloseIcon className="w-5 h-5" />
         </button>
@@ -76,12 +76,12 @@ export function ChatFloatingWidget() {
       <button
         ref={fabRef}
         type="button"
-        onClick={() => setIsOpen(true)}
-        aria-label="Chat with Chand's AI assistant"
+        onClick={() => setIsOpen((v) => !v)}
+        aria-label={isOpen ? 'Close chat' : "Chat with Chand's AI assistant"}
         aria-expanded={isOpen}
-        className="fixed bottom-12 right-12 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 text-white shadow-lg hover:opacity-90 transition-opacity duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 flex items-center justify-center"
+        className="fixed bottom-12 right-12 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 text-white shadow-lg hover:opacity-90 transition-opacity duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 flex items-center justify-center cursor-pointer"
       >
-        <ChatIcon className="w-6 h-6" />
+        {isOpen ? <CloseIcon className="w-6 h-6" /> : <ChatIcon className="w-6 h-6" />}
       </button>
 
       {/* SINGLE-MOUNT: exactly one ChatSurface via JS ternary (D-08/D-09) */}

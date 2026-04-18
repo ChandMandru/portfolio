@@ -80,7 +80,7 @@ function EmptyState({
   onChipClick: (text: string) => void;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center h-full gap-4 text-center py-12 px-4">
+    <div className="flex flex-col items-center gap-4 text-center py-6 px-4">
       <p className="text-base text-foreground font-medium">
         Hi! I&apos;m Chand&apos;s AI assistant.
       </p>
@@ -199,7 +199,7 @@ export function ChatSurface({
   const charCount = inputValue.length;
 
   return (
-    <div className="flex flex-col h-full min-h-0">
+    <div className="flex flex-col flex-1 min-h-0">
       {/* Scroll area */}
       <div
         ref={scrollRef}
@@ -207,9 +207,9 @@ export function ChatSurface({
         role="log"
         aria-live="polite"
         aria-label="Conversation"
-        className={`flex-1 overflow-y-auto min-h-0 ${scrollAreaClassName}`}
+        className={`flex-1 overflow-y-auto min-h-0 flex flex-col ${scrollAreaClassName}`}
       >
-        <div className="flex flex-col gap-6 py-4">
+        <div className="flex flex-col gap-6 py-4 mt-auto">
           {showEmpty && <EmptyState onChipClick={handleChipClick} />}
           {messages.map((msg) => (
             <MessageBubble key={msg.id} message={msg} />
@@ -274,7 +274,7 @@ export function ChatSurface({
               type="button"
               onClick={() => stop()}
               aria-label="Stop generating"
-              className="shrink-0 h-10 w-10 rounded-lg flex items-center justify-center bg-muted border border-border text-foreground hover:bg-border transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+              className="shrink-0 h-12 w-12 rounded-lg flex items-center justify-center bg-muted border border-border text-foreground hover:bg-border transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 cursor-pointer"
             >
               <StopIcon className="w-4 h-4" />
               <span className="sr-only">Stop</span>
@@ -285,7 +285,7 @@ export function ChatSurface({
               disabled={!inputValue.trim()}
               aria-label="Send message"
               aria-disabled={!inputValue.trim()}
-              className="shrink-0 h-10 w-10 rounded-lg flex items-center justify-center bg-gradient-to-r from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 text-white hover:opacity-90 transition-opacity duration-150 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+              className="shrink-0 h-12 w-12 rounded-lg flex items-center justify-center bg-gradient-to-r from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 text-white hover:opacity-90 transition-opacity duration-150 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 cursor-pointer"
             >
               <PaperPlaneIcon className="w-4 h-4" />
             </button>

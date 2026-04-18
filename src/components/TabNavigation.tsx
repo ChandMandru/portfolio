@@ -3,12 +3,11 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { SkillsSection } from '@/components/SkillsSection';
 import { ExperienceSection } from '@/components/ExperienceSection';
-import { SocialLinksSection } from '@/components/SocialLinksSection';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
-const TABS = ['Skills', 'Experience', 'Connect'] as const;
+const TABS = ['Experience', 'Skills'] as const;
 type Tab = (typeof TABS)[number];
-const TAB_INDEX: Record<Tab, number> = { Skills: 0, Experience: 1, Connect: 2 };
+const TAB_INDEX: Record<Tab, number> = { Experience: 0, Skills: 1 };
 
 function TabContent({ tab }: { tab: Tab }) {
   switch (tab) {
@@ -16,8 +15,6 @@ function TabContent({ tab }: { tab: Tab }) {
       return <SkillsSection />;
     case 'Experience':
       return <ExperienceSection />;
-    case 'Connect':
-      return <SocialLinksSection />;
   }
 }
 
@@ -71,7 +68,7 @@ export function TabNavigation() {
     : 'opacity-100 translate-x-0';
 
   return (
-    <section className="py-12 md:py-16">
+    <section className="pb-12 md:pb-16">
       <div ref={ref}>
         <div className="relative flex border-b border-border mb-10">
           {TABS.map((tab, i) => (
@@ -79,7 +76,7 @@ export function TabNavigation() {
               key={tab}
               ref={(el) => { tabRefs.current[i] = el; }}
               onClick={() => handleTabChange(tab)}
-              className={`flex-1 py-3 text-base font-semibold tracking-wide transition-colors duration-200 relative -mb-px ${
+              className={`flex-1 py-3 text-base font-semibold tracking-wide transition-colors duration-200 relative -mb-px cursor-pointer ${
                 activeTab === tab
                   ? 'text-foreground'
                   : 'text-muted-foreground hover:text-foreground'

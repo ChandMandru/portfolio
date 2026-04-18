@@ -1,9 +1,9 @@
 'use client';
 
-import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
 import { ChatSurface } from '@/components/chat/ChatSurface';
 import { RotateCcwIcon } from '@/components/chat/icons';
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 
 export default function ChatPage() {
   const surfaceRef = useRef<{ reset: () => void } | null>(null);
@@ -40,11 +40,8 @@ export default function ChatPage() {
             className="flex items-baseline gap-2 hover:opacity-80 transition-opacity duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 rounded"
             aria-label="Back to homepage"
           >
-            <span className="text-xl font-semibold bg-gradient-to-r from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
+            <span className="text-3xl font-semibold bg-gradient-to-r from-blue-500 to-violet-600 dark:from-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
               Chand Mandru
-            </span>
-            <span className="text-sm text-muted-foreground hidden sm:inline">
-              Software Developer
             </span>
           </Link>
           {/* D-31: New chat reset button */}
@@ -55,7 +52,7 @@ export default function ChatPage() {
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
           >
             <RotateCcwIcon className="w-4 h-4" />
-            <span>New chat</span>
+            <span className="hover:cursor-pointer">New chat</span>
           </button>
         </div>
       </header>
@@ -66,7 +63,7 @@ export default function ChatPage() {
           surfaceRef={surfaceRef}
           autoFocus={autoFocus}
           scrollAreaClassName=""
-          inputAreaClassName="sticky bottom-0 bg-background/80 backdrop-blur-sm py-3"
+          inputAreaClassName="sticky bottom-0 bg-background/80 backdrop-blur-sm pt-3 pb-24"
         />
       </main>
     </div>
