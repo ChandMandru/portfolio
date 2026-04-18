@@ -8,7 +8,8 @@ export interface ExperienceEntry {
   technologies?: string[];
   documentUrl?: string;
   documentLabel?: string;
-  companyLogoUrl?: string;
+  imageUrl?: string;
+  imageAlt?: string;
 }
 
 // D-02: Skills organized by category

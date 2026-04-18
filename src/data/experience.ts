@@ -13,6 +13,8 @@ export const experience: ExperienceEntry[] = [
     technologies: ['Java', 'Spring Boot', 'Hyperledger Aries', 'DIDComm', 'Verifiable Credentials'],
     documentUrl: '/Bachelor-Thesis-Chand-Mandru.pdf',
     documentLabel: 'Download Thesis',
+    imageUrl: '/experience/hsrm.jpg',
+    imageAlt: 'RheinMain University of Applied Sciences',
   },
   {
     title: 'Working Student Android Developer',
@@ -27,6 +29,8 @@ export const experience: ExperienceEntry[] = [
     technologies: ['Kotlin', 'Android SDK', 'Jetpack Compose', 'Sentry', 'Gradle'],
     documentUrl: '/Chand-Mandru-Arbeitszeugnis.pdf',
     documentLabel: 'Work Reference',
+    imageUrl: '/experience/c24-bank.png',
+    imageAlt: 'C24 Bank',
   },
   {
     title: 'Lotcheck Coordination Assistant',
@@ -37,6 +41,8 @@ export const experience: ExperienceEntry[] = [
       'Coordinated SW/HW preparation for Nintendo Switch software testing',
       'Organized and managed testing staff schedules and assignments',
     ],
+    imageUrl: '/experience/nintendo.jpg',
+    imageAlt: 'Nintendo of Europe',
   },
   {
     title: 'Game Tester Lotcheck',
@@ -46,5 +52,7 @@ export const experience: ExperienceEntry[] = [
     accomplishments: [
       'QA testing of Nintendo Switch software releases prior to market launch',
     ],
+    imageUrl: '/experience/nintendo.jpg',
+    imageAlt: 'Nintendo of Europe',
   },
 ];
