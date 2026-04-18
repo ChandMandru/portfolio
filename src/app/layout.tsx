@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://chandmandru.dev'),
+  metadataBase: new URL('https://www.chandmandru.dev'),
   title: {
     default: 'Chand Mandru — Software Developer',
     template: '%s — Chand Mandru',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   creator: 'Chand Mandru',
   openGraph: {
     type: 'website',
-    url: 'https://chandmandru.dev',
+    url: 'https://www.chandmandru.dev',
     siteName: 'Chand Mandru — Portfolio',
     title: 'Chand Mandru — Software Developer',
     description:
