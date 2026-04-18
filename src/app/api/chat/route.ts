@@ -1,4 +1,4 @@
-import { streamText } from 'ai';
+import { streamText, convertToModelMessages, type UIMessage } from 'ai';
 import { openai } from '@ai-sdk/openai';
 import { buildSystemPrompt } from '@/lib/chatbot/buildSystemPrompt';
 import { checkRateLimit } from '@/lib/chatbot/ratelimit';
@@ -48,14 +48,17 @@ export async function POST(request: Request) {
   }
 
   // 4. Truncate conversation history (D-04: last 10 messages)
-  const truncated = messages.slice(-10);
+  // useChat + DefaultChatTransport send UIMessage[] ({role, parts}); streamText
+  // wants ModelMessage[] ({role, content}). Convert before passing.
+  const uiMessages = messages as UIMessage[];
+  const truncated = uiMessages.slice(-10);
 
   // 5. Stream response from OpenAI
   try {
     const result = streamText({
       model: openai('gpt-4o-mini'),
       system: buildSystemPrompt(),
-      messages: truncated,
+      messages: await convertToModelMessages(truncated),
       maxOutputTokens: 500, // D-12: cap response length
       temperature: 0.3, // Low temperature for factual, consistent answers
     });
